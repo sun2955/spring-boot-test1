@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import com.example.demo.dao.HUSERDao;
 import com.example.demo.dto.HUSER;
 import com.example.demo.service.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;
