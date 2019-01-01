@@ -1,0 +1,26 @@
+server:
+  port: 8000
+  servlet:
+    context-path: /demo
+message:
+  data:
+    name: szy
+    age : 20
+    school : 黄石理工
+testStatic:
+  data:
+    hehe: kkkkkkkkkkkkkk
+spring:
+#数据源
+  datasource:
+    url:    jdbc:mysql://---.---.--.--:----/bootest?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true
+    username: ---
+    password: ''
+    driver-class-name: com.mysql.jdbc.Driver
+mybatis:
+  # type-aliases扫描路径
+  type-aliases-package: com.example.demo.dto
+  # mapper xml实现扫描路径
+  mapper-locations: classpath:mapper/*/*.xml
+  property:
+    order: BEFORE

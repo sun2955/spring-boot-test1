@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.HUSERDao">
+	<resultMap id="BaseResultMap" type="com.example.demo.dto.HUSER">
+		<id column="user_id" jdbcType="BIGINT" property="userId" />
+		<result column="user_name" jdbcType="VARCHAR" property="userName" />
+		<result column="password" jdbcType="VARCHAR" property="password" />
+		<result column="intro" jdbcType="VARCHAR" property="intro" />
+    	<result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+		<result column="head_img" jdbcType="VARCHAR" property="headImg" />
+		<result column="sex" jdbcType="CHAR" property="sex" />
+		<result column="birth" jdbcType="DATE" property="birth" />
+		<result column="horoscope" jdbcType="VARCHAR" property="horoscope" />
+		<result column="focus" jdbcType="BIGINT" property="focus" />
+		<result column="follower" jdbcType="BIGINT" property="follower" />
+		<result column="popularity" jdbcType="BIGINT" property="popularity" />
+		<result column="level" jdbcType="BIGINT" property="level" />
+		<result column="inviter_id" jdbcType="BIGINT" property="inviterId" />
+		<result column="last_login" jdbcType="TIMESTAMP" property="lastLogin" />
+		<result column="type" jdbcType="TINYINT" property="type" />
+		<result column="email" jdbcType="VARCHAR" property="email" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="create_user" jdbcType="VARCHAR" property="createUser" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+		<result column="status" jdbcType="INTEGER" property="status" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		user_id, user_name, password, intro,nick_name, head_img, sex, birth, horoscope, focus,
+		follower,
+		popularity, level, inviter_id, last_login, type, email, create_time, create_user,
+		update_time, update_user, status
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from h_user
+		where user_id = #{userId,jdbcType=BIGINT}
+	</select>
+	
+	<select id="selectByProject" parameterType="com.example.demo.dto.HUSER" resultMap="BaseResultMap">
+		select
+			<include refid="Base_Column_List" />
+		from h_user
+		<where>
+			<if test="userId != null">
+				and user_id = #{userId,jdbcType=VARCHAR}
+			</if>
+			
+			<if test="userName != null">
+				and user_name = #{userName,jdbcType=VARCHAR}
+			</if>
+			<if test="password != null">
+				and password = #{password,jdbcType=VARCHAR}
+			</if>
+			<if test="intro != null">
+				and intro = #{intro,jdbcType=VARCHAR}
+			</if>
+			<if test="headImg != null">
+				and head_img = #{headImg,jdbcType=VARCHAR}
+			</if>
+			<if test="sex != null">
+				and sex = #{sex,jdbcType=CHAR}
+			</if>
+			<if test="birth != null">
+				and birth = #{birth,jdbcType=DATE}
+			</if>
+			<if test="horoscope != null">
+				and horoscope = #{horoscope,jdbcType=VARCHAR}
+			</if>
+			<if test="focus != null">
+				and focus = #{focus,jdbcType=BIGINT}
+			</if>
+			<if test="follower != null">
+				and follower = #{follower,jdbcType=BIGINT}
+			</if>
+			<if test="popularity != null">
+				and popularity = #{popularity,jdbcType=BIGINT}
+			</if>
+			<if test="level != null">
+				and level = #{level,jdbcType=BIGINT}
+			</if>
+			<if test="inviterId != null">
+				and inviter_id = #{inviterId,jdbcType=BIGINT}
+			</if>
+			<if test="lastLogin != null">
+				and last_login = #{lastLogin,jdbcType=TIMESTAMP}
+			</if>
+			<if test="type != null">
+				and type = #{type,jdbcType=TINYINT}
+			</if>
+			<if test="email != null">
+				and email = #{email,jdbcType=VARCHAR}
+			</if>
+			<if test="createTime != null">
+				and create_time = #{createTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="createUser != null">
+				and create_user = #{createUser,jdbcType=VARCHAR}
+			</if>
+			<if test="updateTime != null">
+				and update_time = #{updateTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="updateUser != null">
+				and update_user = #{updateUser,jdbcType=VARCHAR}
+			</if>
+			<if test="status != null">
+				and status = #{status,jdbcType=INTEGER}
+			</if>
+			<if test="nickName != null">
+				and nick_name = #{nickName,jdbcType=LONGVARCHAR}
+			</if>
+		</where>
+	</select>
+	
+
+	<select id="selectUserInfoById" parameterType="com.example.demo.entiy.HUSER_E" resultType="com.example.demo.entiy.HUSER_E">
+		select
+			user_id AS userId ,
+			nick_name AS nickName ,
+			user_name AS userName ,
+			intro AS intro,
+			head_img AS headImg ,
+			DATE_FORMAT(birth,'%Y-%m-%d') AS birth,
+			(case sex WHEN "1" THEN '男' 
+					 WHEN "0" THEN '女' end ) as sex ,  
+			COUNT(f.id) AS focus,
+			T.follower AS follower,
+			DATE_FORMAT(u.create_time,'%Y-%m-%d')   AS createTime
+		from h_user u
+		LEFT JOIN h_focus f  ON u.user_id = f.rel_user_id AND f.status = u.status
+		LEFT JOIN (
+			SELECT user_id id,COUNT(f1.id) AS follower FROM h_user u1
+		 		LEFT  JOIN h_focus f1 ON u1.user_id = f1.rel_focus_user_id
+		  						AND f1.STATUS = u1.STATUS 
+		<where>
+			<if test="userId != null">
+				and user_id = #{userId,jdbcType=VARCHAR}
+			</if>
+		</where>	
+		) T ON T.id = user_id 		
+		<where>
+			<if test="userId != null">
+				and user_id = #{userId,jdbcType=VARCHAR}
+			</if>
+			
+			<if test="userName != null">
+				and user_name = #{userName,jdbcType=VARCHAR}
+			</if>
+			<if test="password != null">
+				and password = #{password,jdbcType=VARCHAR}
+			</if>
+			<if test="intro != null">
+				and intro = #{intro,jdbcType=VARCHAR}
+			</if>
+			<if test="headImg != null">
+				and head_img = #{headImg,jdbcType=VARCHAR}
+			</if>
+			<if test="sex != null">
+				and sex = #{sex,jdbcType=CHAR}
+			</if>
+			<if test="birth != null">
+				and birth = #{birth,jdbcType=DATE}
+			</if>
+			<if test="horoscope != null">
+				and horoscope = #{horoscope,jdbcType=VARCHAR}
+			</if>
+			<if test="focus != null">
+				and focus = #{focus,jdbcType=BIGINT}
+			</if>
+			<if test="follower != null">
+				and follower = #{follower,jdbcType=BIGINT}
+			</if>
+			<if test="popularity != null">
+				and popularity = #{popularity,jdbcType=BIGINT}
+			</if>
+			<if test="level != null">
+				and level = #{level,jdbcType=BIGINT}
+			</if>
+			<if test="inviterId != null">
+				and inviter_id = #{inviterId,jdbcType=BIGINT}
+			</if>
+			<if test="lastLogin != null">
+				and last_login = #{lastLogin,jdbcType=TIMESTAMP}
+			</if>
+			<if test="type != null">
+				and type = #{type,jdbcType=TINYINT}
+			</if>
+			<if test="email != null">
+				and email = #{email,jdbcType=VARCHAR}
+			</if>
+			<if test="createTime != null">
+				and create_time = #{createTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="createUser != null">
+				and create_user = #{createUser,jdbcType=VARCHAR}
+			</if>
+			<if test="updateTime != null">
+				and update_time = #{updateTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="updateUser != null">
+				and update_user = #{updateUser,jdbcType=VARCHAR}
+			</if>
+			<if test="status != null">
+				and status = #{status,jdbcType=INTEGER}
+			</if>
+			<if test="nickName != null">
+				and nick_name = #{nick_name,jdbcType=LONGVARCHAR}
+			</if>
+		</where>
+	</select>
+	
+	
+	
+	
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from h_user
+		where user_id = #{userId,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="com.example.demo.dto.HUSER">
+		insert into h_user (user_id, user_name, password,
+		intro, head_img, sex, birth,
+		horoscope, focus, follower,
+		popularity, level, inviter_id,
+		last_login, type, email,
+		create_time, create_user, update_time,
+		update_user, status, nick_name
+		)
+		values (#{userId,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR},
+		#{password,jdbcType=VARCHAR},
+		#{intro,jdbcType=VARCHAR}, #{headImg,jdbcType=VARCHAR}, #{sex,jdbcType=CHAR},
+		#{birth,jdbcType=DATE},
+		#{horoscope,jdbcType=VARCHAR}, #{focus,jdbcType=BIGINT}, #{follower,jdbcType=BIGINT},
+		#{popularity,jdbcType=BIGINT}, #{level,jdbcType=BIGINT},
+		#{inviterId,jdbcType=BIGINT},
+		#{lastLogin,jdbcType=TIMESTAMP}, #{type,jdbcType=TINYINT}, #{email,jdbcType=VARCHAR},
+		#{createTime,jdbcType=TIMESTAMP}, #{createUser,jdbcType=VARCHAR},
+		#{updateTime,jdbcType=TIMESTAMP},
+		#{updateUser,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{nickName,jdbcType=LONGVARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.example.demo.dto.HUSER">
+		insert into h_user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				user_id,
+			</if>
+			<if test="userName != null">
+				user_name,
+			</if>
+			<if test="password != null">
+				password,
+			</if>
+			<if test="intro != null">
+				intro,
+			</if>
+			<if test="headImg != null">
+				head_img,
+			</if>
+			<if test="sex != null">
+				sex,
+			</if>
+			<if test="birth != null">
+				birth,
+			</if>
+			<if test="horoscope != null">
+				horoscope,
+			</if>
+			<if test="focus != null">
+				focus,
+			</if>
+			<if test="follower != null">
+				follower,
+			</if>
+			<if test="popularity != null">
+				popularity,
+			</if>
+			<if test="level != null">
+				level,
+			</if>
+			<if test="inviterId != null">
+				inviter_id,
+			</if>
+			<if test="lastLogin != null">
+				last_login,
+			</if>
+			<if test="type != null">
+				type,
+			</if>
+			<if test="email != null">
+				email,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="createUser != null">
+				create_user,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="updateUser != null">
+				update_user,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+			<if test="nickName != null">
+				nick_name,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				#{userId,jdbcType=BIGINT},
+			</if>
+			<if test="userName != null">
+				#{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				#{password,jdbcType=VARCHAR},
+			</if>
+			<if test="intro != null">
+				#{intro,jdbcType=VARCHAR},
+			</if>
+			<if test="headImg != null">
+				#{headImg,jdbcType=VARCHAR},
+			</if>
+			<if test="sex != null">
+				#{sex,jdbcType=CHAR},
+			</if>
+			<if test="birth != null">
+				#{birth,jdbcType=DATE},
+			</if>
+			<if test="horoscope != null">
+				#{horoscope,jdbcType=VARCHAR},
+			</if>
+			<if test="focus != null">
+				#{focus,jdbcType=BIGINT},
+			</if>
+			<if test="follower != null">
+				#{follower,jdbcType=BIGINT},
+			</if>
+			<if test="popularity != null">
+				#{popularity,jdbcType=BIGINT},
+			</if>
+			<if test="level != null">
+				#{level,jdbcType=BIGINT},
+			</if>
+			<if test="inviterId != null">
+				#{inviterId,jdbcType=BIGINT},
+			</if>
+			<if test="lastLogin != null">
+				#{lastLogin,jdbcType=TIMESTAMP},
+			</if>
+			<if test="type != null">
+				#{type,jdbcType=TINYINT},
+			</if>
+			<if test="email != null">
+				#{email,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createUser != null">
+				#{createUser,jdbcType=VARCHAR},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateUser != null">
+				#{updateUser,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=INTEGER},
+			</if>
+			<if test="nickName != null">
+				#{nickName,jdbcType=LONGVARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.example.demo.dto.HUSER">
+		update h_user
+		<set>
+			<if test="userName != null">
+				user_name = #{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				password = #{password,jdbcType=VARCHAR},
+			</if>
+			<if test="intro != null">
+				intro = #{intro,jdbcType=VARCHAR},
+			</if>
+			<if test="headImg != null">
+				head_img = #{headImg,jdbcType=VARCHAR},
+			</if>
+			<if test="sex != null">
+				sex = #{sex,jdbcType=CHAR},
+			</if>
+			<if test="birth != null">
+				birth = #{birth,jdbcType=DATE},
+			</if>
+			<if test="horoscope != null">
+				horoscope = #{horoscope,jdbcType=VARCHAR},
+			</if>
+			<if test="focus != null">
+				focus = #{focus,jdbcType=BIGINT},
+			</if>
+			<if test="follower != null">
+				follower = #{follower,jdbcType=BIGINT},
+			</if>
+			<if test="popularity != null">
+				popularity = #{popularity,jdbcType=BIGINT},
+			</if>
+			<if test="level != null">
+				level = #{level,jdbcType=BIGINT},
+			</if>
+			<if test="inviterId != null">
+				inviter_id = #{inviterId,jdbcType=BIGINT},
+			</if>
+			<if test="lastLogin != null">
+				last_login = #{lastLogin,jdbcType=TIMESTAMP},
+			</if>
+			<if test="type != null">
+				type = #{type,jdbcType=TINYINT},
+			</if>
+			<if test="email != null">
+				email = #{email,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createUser != null">
+				create_user = #{createUser,jdbcType=VARCHAR},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateUser != null">
+				update_user = #{updateUser,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=INTEGER},
+			</if>
+			<if test="nickName != null">
+				nick_name = #{nickName,jdbcType=LONGVARCHAR},
+			</if>
+		</set>
+		where user_id = #{userId,jdbcType=BIGINT}
+	</update>
+	
+	<update id="updateByPrimaryKey" parameterType="com.example.demo.dto.HUSER">
+		update h_user
+		set user_name = #{userName,jdbcType=VARCHAR},
+		password = #{password,jdbcType=VARCHAR},
+		intro = #{intro,jdbcType=VARCHAR},
+		head_img = #{headImg,jdbcType=VARCHAR},
+		sex = #{sex,jdbcType=CHAR},
+		birth = #{birth,jdbcType=DATE},
+		horoscope = #{horoscope,jdbcType=VARCHAR},
+		focus = #{focus,jdbcType=BIGINT},
+		follower = #{follower,jdbcType=BIGINT},
+		popularity = #{popularity,jdbcType=BIGINT},
+		level = #{level,jdbcType=BIGINT},
+		inviter_id = #{inviterId,jdbcType=BIGINT},
+		last_login = #{lastLogin,jdbcType=TIMESTAMP},
+		type = #{type,jdbcType=TINYINT},
+		email = #{email,jdbcType=VARCHAR},
+		create_time = #{createTime,jdbcType=TIMESTAMP},
+		create_user = #{createUser,jdbcType=VARCHAR},
+		update_time = #{updateTime,jdbcType=TIMESTAMP},
+		update_user = #{updateUser,jdbcType=VARCHAR},
+		status = #{status,jdbcType=INTEGER}
+		where user_id = #{userId,jdbcType=BIGINT}
+	</update>
+</mapper>
