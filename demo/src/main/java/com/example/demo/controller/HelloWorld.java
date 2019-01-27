@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.HUSER;
+import com.example.demo.rabbitmq.sender.HelloSender;
 import com.example.demo.service.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -35,9 +36,8 @@ public class HelloWorld {
 
 
     @GetMapping(value = "select")
-    public HUSER select(){
+    public HUSER hello(){
         HUSER huser = helloService.select(new Long(1));
         return huser;
     }
-
 }

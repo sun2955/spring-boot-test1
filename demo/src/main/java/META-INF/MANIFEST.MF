@@ -1,0 +1,35 @@
+Manifest-Version: 1.0
+Class-Path: aspectjweaver-1.8.13.jar hibernate-validator-5.3.6.Final.j
+ ar spring-boot-devtools-1.5.9.RELEASE.jar classmate-1.3.4.jar hiberna
+ te-core-5.0.12.Final.jar snakeyaml-1.17.jar spring-context-4.3.13.REL
+ EASE.jar mybatis-3.4.6.jar logback-core-1.1.11.jar spring-web-4.3.13.
+ RELEASE.jar spring-orm-4.3.13.RELEASE.jar commons-pool2-2.4.3.jar spr
+ ing-oxm-4.3.13.RELEASE.jar jconsole.jar tomcat-juli-8.5.23.jar tomcat
+ -embed-el-8.5.23.jar hibernate-commons-annotations-5.0.1.Final.jar pa
+ gehelper-4.1.0.jar spring-boot-1.5.9.RELEASE.jar log4j-over-slf4j-1.7
+ .25.jar dom4j-1.6.1.jar logback-classic-1.1.11.jar spring-boot-starte
+ r-web-1.5.9.RELEASE.jar javassist-3.21.0-GA.jar spring-boot-starter-j
+ dbc-1.5.9.RELEASE.jar jcl-over-slf4j-1.7.25.jar jsqlparser-0.9.4.jar 
+ mybatis-spring-boot-starter-1.3.2.jar spring-boot-starter-tomcat-1.5.
+ 9.RELEASE.jar hibernate-entitymanager-5.0.12.Final.jar spring-webmvc-
+ 4.3.13.RELEASE.jar jackson-core-2.8.10.jar spring-boot-starter-1.5.9.
+ RELEASE.jar spring-boot-starter-logging-1.5.9.RELEASE.jar slf4j-api-1
+ .7.25.jar spring-expression-4.3.13.RELEASE.jar mybatis-spring-1.3.2.j
+ ar spring-context-support-4.3.13.RELEASE.jar mysql-connector-java-5.1
+ .44.jar jedis-2.9.0.jar spring-data-commons-1.13.9.RELEASE.jar spring
+ -core-4.3.13.RELEASE.jar validation-api-1.1.0.Final.jar spring-aop-4.
+ 3.13.RELEASE.jar spring-jdbc-4.3.13.RELEASE.jar hibernate-jpa-2.1-api
+ -1.0.0.Final.jar spring-beans-4.3.13.RELEASE.jar spring-data-keyvalue
+ -1.2.9.RELEASE.jar druid-1.0.11.jar spring-boot-autoconfigure-1.5.9.R
+ ELEASE.jar jul-to-slf4j-1.7.25.jar spring-data-jpa-1.11.9.RELEASE.jar
+  tomcat-embed-websocket-8.5.23.jar jackson-databind-2.8.10.jar druid-
+ spring-boot-starter-1.1.0.jar tomcat-embed-core-8.5.23.jar jandex-2.0
+ .0.Final.jar jackson-annotations-2.8.0.jar spring-boot-starter-aop-1.
+ 5.9.RELEASE.jar tomcat-annotations-api-8.5.23.jar tools.jar antlr-2.7
+ .7.jar javax.transaction-api-1.2.jar mybatis-spring-boot-autoconfigur
+ e-1.3.2.jar spring-aspects-4.3.13.RELEASE.jar spring-boot-starter-dat
+ a-redis-1.5.9.RELEASE.jar jboss-logging-3.3.1.Final.jar spring-data-r
+ edis-1.8.9.RELEASE.jar spring-boot-starter-data-jpa-1.5.9.RELEASE.jar
+  spring-tx-4.3.13.RELEASE.jar tomcat-jdbc-8.5.23.jar
+Main-Class: com.example.demo.DemoApplication
+
