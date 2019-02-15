@@ -1,7 +1,9 @@
+
 server:
   port: 8000
   servlet:
     context-path: /demo
+  address: 127.0.0.2
 message:
   data:
     name: szy
@@ -71,6 +73,14 @@ spring:
     # 是否开启生产者回调
     publisher-confirms: true
     virtual-host: /
+   #热部署 开发者模式开启，生成模式关闭
+  devtools:
+    restart:
+      enabled: true
+  mvc:
+    view:
+      prefix: /
+      suffix: .html
  # mail:
  #   port: 25
   #  username:
@@ -86,5 +96,4 @@ mybatis:
 logging:
   level:
     root : info
-    com.example.demo : debug
-
+    com.sun.demo : debug
