@@ -1,7 +1,7 @@
 package com.sun.demo.dao;
 
-import com.example.demo.dto.HUSER;
-import com.example.demo.entiy.HUSER_E;
+import com.sun.demo.dto.HUSER;
+import com.sun.demo.entiy.HUSER_E;
 import org.springframework.stereotype.Repository;
 
 public interface HUSERDao {

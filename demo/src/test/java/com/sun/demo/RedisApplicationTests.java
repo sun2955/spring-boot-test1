@@ -1,9 +1,5 @@
 package com.sun.demo;
 
-import com.example.demo.dto.HUSER;
-import com.example.demo.model.BaseDic;
-import com.example.demo.redis.service.RedisService;
-import com.example.demo.service.HelloService;
 import com.sun.demo.model.BaseDic;
 import com.sun.demo.redis.service.RedisService;
 import org.junit.Assert;

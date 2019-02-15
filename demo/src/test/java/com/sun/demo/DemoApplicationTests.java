@@ -1,7 +1,7 @@
 package com.sun.demo;
 
-import com.example.demo.dto.HUSER;
-import com.example.demo.service.HelloService;
+import com.sun.demo.dto.HUSER;
+import com.sun.demo.service.HelloService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,5 @@
 package com.sun.demo;
 
-import com.example.demo.rabbitmq.sender.HelloSender;
 import com.sun.demo.rabbitmq.sender.HelloSender;
 import org.junit.Test;
 import org.junit.runner.RunWith;

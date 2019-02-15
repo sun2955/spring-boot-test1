@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.dao.HUSERDao">
-	<resultMap id="BaseResultMap" type="com.example.demo.dto.HUSER">
+<mapper namespace="com.sun.demo.dao.HUSERDao">
+	<resultMap id="BaseResultMap" type="com.sun.demo.dto.HUSER">
 		<id column="user_id" jdbcType="BIGINT" property="userId" />
 		<result column="user_name" jdbcType="VARCHAR" property="userName" />
 		<result column="password" jdbcType="VARCHAR" property="password" />
@@ -39,7 +39,7 @@
 		where user_id = #{userId,jdbcType=BIGINT}
 	</select>
 	
-	<select id="selectByProject" parameterType="com.example.demo.dto.HUSER" resultMap="BaseResultMap">
+	<select id="selectByProject" parameterType="com.sun.demo.dto.HUSER" resultMap="BaseResultMap">
 		select
 			<include refid="Base_Column_List" />
 		from h_user
@@ -115,7 +115,7 @@
 	</select>
 	
 
-	<select id="selectUserInfoById" parameterType="com.example.demo.entiy.HUSER_E" resultType="com.example.demo.entiy.HUSER_E">
+	<select id="selectUserInfoById" parameterType="com.sun.demo.entiy.HUSER_E" resultType="com.sun.demo.entiy.HUSER_E">
 		select
 			user_id AS userId ,
 			nick_name AS nickName ,
@@ -219,7 +219,7 @@
 		delete from h_user
 		where user_id = #{userId,jdbcType=BIGINT}
 	</delete>
-	<insert id="insert" parameterType="com.example.demo.dto.HUSER">
+	<insert id="insert" parameterType="com.sun.demo.dto.HUSER">
 		insert into h_user (user_id, user_name, password,
 		intro, head_img, sex, birth,
 		horoscope, focus, follower,
@@ -241,7 +241,7 @@
 		#{updateUser,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{nickName,jdbcType=LONGVARCHAR}
 		)
 	</insert>
-	<insert id="insertSelective" parameterType="com.example.demo.dto.HUSER">
+	<insert id="insertSelective" parameterType="com.sun.demo.dto.HUSER">
 		insert into h_user
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="userId != null">
@@ -380,7 +380,7 @@
 			</if>
 		</trim>
 	</insert>
-	<update id="updateByPrimaryKeySelective" parameterType="com.example.demo.dto.HUSER">
+	<update id="updateByPrimaryKeySelective" parameterType="com.sun.demo.dto.HUSER">
 		update h_user
 		<set>
 			<if test="userName != null">
@@ -450,7 +450,7 @@
 		where user_id = #{userId,jdbcType=BIGINT}
 	</update>
 	
-	<update id="updateByPrimaryKey" parameterType="com.example.demo.dto.HUSER">
+	<update id="updateByPrimaryKey" parameterType="com.sun.demo.dto.HUSER">
 		update h_user
 		set user_name = #{userName,jdbcType=VARCHAR},
 		password = #{password,jdbcType=VARCHAR},

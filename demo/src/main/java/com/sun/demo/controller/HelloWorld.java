@@ -1,8 +1,5 @@
 package com.sun.demo.controller;
 
-import com.example.demo.dto.HUSER;
-import com.example.demo.rabbitmq.sender.HelloSender;
-import com.example.demo.service.HelloService;
 import com.sun.demo.dto.HUSER;
 import com.sun.demo.service.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;
