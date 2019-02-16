@@ -1,8 +1,7 @@
 
 server:
   port: 8000
-  servlet:
-    context-path: /demo
+  context-path: /demo
   address: 127.0.0.2
 message:
   data:
@@ -97,3 +96,15 @@ logging:
   level:
     root : info
     com.sun.demo : debug
+#自定义swagger2配置 查看链接http://127.0.0.2:8000/demo/swagger-ui.html
+swagger2:
+  user-name: szy
+  url: http://www.baidu.com
+  email: 11122@qq.com
+  title: Swaager2
+  desc: Swaager2
+  version: 1.0
+  license: Apache
+  license-url: http://www.apache.org/licenses/LICENSE-2.0.html
+  terms-of-service-url: www.baidu.com
+  base-package: com.sun.demo.controller
