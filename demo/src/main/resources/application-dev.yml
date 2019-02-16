@@ -86,7 +86,7 @@ spring:
   # password:
 mybatis:
   # type-aliases扫描路径
-  type-aliases-package: com.example.demo.dto
+  type-aliases-package: com.sun.demo.dto
   # mapper xml实现扫描路径
   mapper-locations: classpath:mapper/*/*.xml
   property:
@@ -107,4 +107,4 @@ swagger2:
   license: Apache
   license-url: http://www.apache.org/licenses/LICENSE-2.0.html
   terms-of-service-url: www.baidu.com
-  base-package: com.sun.demo.controller
+  base-package: com.sun.demo.controller.api

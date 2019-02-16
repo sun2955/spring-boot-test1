@@ -1,4 +1,4 @@
-package com.sun.demo.controller;
+package com.sun.demo.controller.api;
 
 import com.sun.demo.dto.HUSER;
 import com.sun.demo.service.HelloService;
@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 @Api(value = "测试接口1", tags = "测试接口", description = "Hello World")
 @ApiResponses(value = {
         @ApiResponse(code = 200, message = "请求正常完成"),

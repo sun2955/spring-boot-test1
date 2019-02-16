@@ -1,6 +1,5 @@
-package com.sun.demo.controller;
+package com.sun.demo.controller.api;
 
-import com.sun.demo.dto.HUSER;
 import com.sun.demo.service.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
