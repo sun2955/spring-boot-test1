@@ -9,6 +9,7 @@ import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @Api(value = "测试接口1", tags = "测试接口", description = "Hello World")
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
         @ApiResponse(code = 500, message = "服务器出现异常")}
 )
 @RestController
+@RequestMapping(value="/api")
 public class HelloWorld {
 
     @Value("${message.data.name}")

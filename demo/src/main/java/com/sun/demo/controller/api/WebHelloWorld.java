@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(value="/h5")
+@RequestMapping(value="/api/h5")
 public class WebHelloWorld {
 
     @Autowired

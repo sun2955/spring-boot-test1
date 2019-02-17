@@ -1,4 +1,4 @@
-package com.sun.demo.base.config;
+package com.sun.demo.base.config.swagger2;
 
 import com.google.common.collect.Sets;
 import org.springframework.boot.context.properties.ConfigurationProperties;
