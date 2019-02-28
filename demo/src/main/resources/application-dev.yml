@@ -14,7 +14,7 @@ testStatic:
 spring:
 #数据源
   datasource:
-    url:    jdbc:mysql:///bootest?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true
+    url:    jdbc:mysql:/// bootest?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true
     username:
     password:
     #使用druid数据源
