@@ -2,3 +2,9 @@
 spring:
   profiles:
     active: pro
+#短信验证
+tencentSms:
+  appid:
+  appkey :
+  templateId :
+  smsSign : 樱花雨
