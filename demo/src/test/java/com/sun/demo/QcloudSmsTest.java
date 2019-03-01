@@ -1,8 +1,8 @@
 package com.sun.demo;
 
+import com.github.qcloudsms.SmsMultiSender;
 import com.github.qcloudsms.SmsMultiSenderResult;
 import com.github.qcloudsms.httpclient.HTTPException;
-import com.sun.demo.base.utils.sms.SmsMultiSender;
 import org.json.JSONException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
