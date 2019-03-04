@@ -1,10 +1,10 @@
 #启动配置文件方案
 spring:
   profiles:
-    active: pro
+    active: dev
 #短信验证
 tencentSms:
   appid:
   appkey :
   templateId :
-  smsSign : 樱花雨
+  smsSign :

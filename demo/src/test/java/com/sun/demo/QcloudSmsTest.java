@@ -3,9 +3,13 @@ package com.sun.demo;
 import com.github.qcloudsms.SmsMultiSender;
 import com.github.qcloudsms.SmsMultiSenderResult;
 import com.github.qcloudsms.httpclient.HTTPException;
+import com.sun.demo.base.utils.SmsTencentUntil;
+import com.sun.demo.base.utils.StringUtils;
+import com.sun.demo.service.HelloService;
 import org.json.JSONException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -16,21 +20,8 @@ import java.io.IOException;
 @SpringBootTest
 public class QcloudSmsTest {
 
-    // 短信应用SDK AppID
-    @Value("${tencentSms.appid}")
-    private int appid;
-
-    // 短信应用SDK AppKey
-    @Value("${message.appkey}")
-    private String appkey;
-
-    // 模板ID
-    @Value("${message.templateId}")
-    private int templateId;
-
-    // 签名内容
-    @Value("${message.smsSign}")
-    private String smsSign;
+    @Autowired
+    public SmsTencentUntil smsTencentUntil;
 
     @Test
     public void contextLoads() {
@@ -38,40 +29,10 @@ public class QcloudSmsTest {
         // 需要发送短信的手机号码
         String[] phoneNumbers = {"15972004233"};
 
-        // 单发短信
-      /*  try {
-            SmsSingleSender ssender = new SmsSingleSender(appid, appkey);
-            SmsSingleSenderResult result = ssender.send(0, "86", phoneNumbers[0],
-                "【樱花雨】您的验证码是: 5678", "", "");
-            System.out.print(result);
-        } catch (HTTPException e) {
-            // HTTP响应码错误
-            e.printStackTrace();
-        } catch (JSONException e) {
-            // json解析错误
-            e.printStackTrace();
-        } catch (IOException e) {
-            // 网络IO错误
-            e.printStackTrace();
-        }*/
-
         // 指定模板ID单发短信
-        try {
-            String[] params = {"5678","Jack"};
-            SmsMultiSender msender = new SmsMultiSender(appid, appkey);
-            SmsMultiSenderResult result =  msender.sendWithParam("86", phoneNumbers,
-                templateId, params, smsSign, "", "");  // 签名参数未提供或者为空时，会使用默认签名发送短信
-            System.out.print(result);
-        } catch (HTTPException e) {
-            // HTTP响应码错误
-            e.printStackTrace();
-        } catch (JSONException e) {
-            // json解析错误
-            e.printStackTrace();
-        } catch (IOException e) {
-            // 网络IO错误
-            e.printStackTrace();
-        }
+
+        smsTencentUntil.sendVcode(StringUtils.getIntRandom(6), phoneNumbers);
+
 
         // 发送语音验证码
        /* try {
