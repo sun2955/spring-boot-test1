@@ -4,7 +4,7 @@ spring:
     active: dev
 #短信验证
 tencentSms:
-  appid:
-  appkey :
-  templateId :
-  smsSign :
+  appid: 1400188440
+  appkey : e779c43434a4d18f940e71b5d7ec1851
+  templateId : 286001
+  smsSign : 樱花雨

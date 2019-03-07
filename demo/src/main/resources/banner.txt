@@ -1,7 +1,6 @@
 ${application.version}
 ${spring-boot.version}
 ${application.title}
-${AnsiColor.CYAN}
   _   _   _   _    _
  / \ / \ / \ / \  / \
 ( C | L | A | S || S |
