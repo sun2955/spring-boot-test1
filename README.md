@@ -22,3 +22,9 @@ spring-boot-test1\demo\src\main\java\com\sun\demo\controller\api  提供接口�
 7.假如日志文件输出 测试地址 : \spring-boot-test1\demo\applog
 
 8.采用 springmvc restful 接口风格.  测试方式:采用postman,改变提交类型进行测试 ,测试地址 http://localhost:8000/demo/api/user/1
+
+9.假如aop ,测试方式 ,在调用接口的时候会输出日志
+
+10.接入 jwt token验证 测试地址(发送tonken) : http://localhost:8000/demo/api/login   测试地址(验证tonken) : http://localhost:8000/demo/api/logout/{username}
+
+11.假如jpa , 测试地址(通过restful风格访问) : localhost:8000/demo/api/student
