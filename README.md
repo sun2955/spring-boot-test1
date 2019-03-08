@@ -13,10 +13,12 @@ spring-boot-test1\demo\src\main\java\com\sun\demo\controller\api  提供接口�
 
 4.接入redis 读取存储的类的系列化,    测试类文件 : RedisApplicationTests
 
-5.接入swagger2 接口文档化工具 ,注意,因为加入包路径,只会翻译某个包下面的接口, 测试路径 : http://127.0.0.2:8000/demo/swagger-ui.html
+5.接入swagger2 接口文档化工具 ,注意,因为加入包路径,只会翻译某个包下面的接口, 测试路径 : http://localhost:8000/demo/swagger-ui.html
 
 6.接入thymeleaf模板引擎,类文件目录   spring-boot-test1\demo\src\main\java\com\sun\demo\controller\web\IndexController.java
 注意在使用thymeleaf 的时候,html文件要放到..\resources\templates 目录下.
-测试地址不拦截地址 : http://127.0.0.2:8000/demo/api/hello 拦截地址: http://127.0.0.2:8000/demo/index.html
+测试地址不拦截地址 : http://localhost:8000/demo/api/hello 拦截地址: http://localhost:8000/demo/index.html
 
 7.假如日志文件输出 测试地址 : \spring-boot-test1\demo\applog
+
+8.采用 springmvc restful 接口风格.  测试方式:采用postman,改变提交类型进行测试 ,测试地址 http://localhost:8000/demo/api/user/1
