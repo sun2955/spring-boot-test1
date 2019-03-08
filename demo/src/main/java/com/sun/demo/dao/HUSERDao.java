@@ -1,8 +1,7 @@
 package com.sun.demo.dao;
 
 import com.sun.demo.dto.HUSER;
-import com.sun.demo.entiy.HUSER_E;
-import org.springframework.stereotype.Repository;
+import com.sun.demo.dto.HUSER_E;
 
 public interface HUSERDao {
     int deleteByPrimaryKey(Long userId);

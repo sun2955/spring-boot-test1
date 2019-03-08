@@ -1,4 +1,4 @@
-package com.sun.demo.entiy;
+package com.sun.demo.dto;
 
 import java.util.Date;
 

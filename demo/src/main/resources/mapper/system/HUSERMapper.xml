@@ -115,7 +115,7 @@
 	</select>
 	
 
-	<select id="selectUserInfoById" parameterType="com.sun.demo.entiy.HUSER_E" resultType="com.sun.demo.entiy.HUSER_E">
+	<select id="selectUserInfoById" parameterType="com.sun.demo.dto.HUSER_E" resultType="com.sun.demo.dto.HUSER_E">
 		select
 			user_id AS userId ,
 			nick_name AS nickName ,

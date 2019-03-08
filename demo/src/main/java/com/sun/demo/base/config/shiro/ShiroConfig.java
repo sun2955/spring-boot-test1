@@ -1,9 +1,12 @@
 package com.sun.demo.base.config.shiro;
 
+import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import com.sun.demo.base.Exception.MyExceptionResolver;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.codec.Base64;
+import org.apache.shiro.mgt.DefaultSessionStorageEvaluator;
+import org.apache.shiro.mgt.DefaultSubjectDAO;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -70,7 +73,7 @@ public class ShiroConfig {
         // 登录成功后要跳转的链接
         shiroFilterFactoryBean.setSuccessUrl("/index");
         // 未授权界面，不生效(详情原因看MyExceptionResolver)
-        shiroFilterFactoryBean.setUnauthorizedUrl("/errorView/403_error.html");
+        shiroFilterFactoryBean.setUnauthorizedUrl("/403_error.html");
 
         //验证码过滤器
       /*  Map<String, Filter> filtersMap = shiroFilterFactoryBean.getFilters();
@@ -109,6 +112,7 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/static/**", "anon");//配置static文件下资源能被访问的，这是个例子
         filterChainDefinitionMap.put("/kaptcha.jpg", "anon");//图片验证码(kaptcha框架)
         filterChainDefinitionMap.put("/api/**", "anon");//API接口  不进行拦截
+        filterChainDefinitionMap.put("/test/**", "anon");//测试接口
         // swagger接口文档
         filterChainDefinitionMap.put("/v2/api-docs", "anon");
         filterChainDefinitionMap.put("/webjars/**", "anon");
@@ -130,6 +134,13 @@ public class ShiroConfig {
         securityManager.setCacheManager(ehCacheManager());//这个如果执行多次，也是同样的一个对象;
         //注入记住我管理器;
         securityManager.setRememberMeManager(rememberMeManager());
+        // 关闭shiro自带的session
+        DefaultSubjectDAO subjectDAO = new DefaultSubjectDAO();
+        DefaultSessionStorageEvaluator defaultSessionStorageEvaluator = new DefaultSessionStorageEvaluator();
+        defaultSessionStorageEvaluator.setSessionStorageEnabled(false);
+        subjectDAO.setSessionStorageEvaluator(defaultSessionStorageEvaluator);
+        securityManager.setSubjectDAO(subjectDAO);
+
         return securityManager;
     }
 
@@ -213,9 +224,9 @@ public class ShiroConfig {
         return cookieRememberMeManager;
     }
 
-  /*  @Bean(name = "shiroDialect")
+
+/*    @Bean(name = "shiroDialect")
     public ShiroDialect shiroDialect() {
         return new ShiroDialect();
     }*/
-
 }

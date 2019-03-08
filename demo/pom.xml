@@ -31,6 +31,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
+		<!-- aop 切面-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
 
 		<!-- spring boot 测试 -->
 		<dependency>
@@ -69,10 +74,11 @@
 		</dependency>
 
 		<!-- jpa -->
-		<!--<dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>-->
+	    </dependency>
+
 		<!-- alibaba的druid数据库连接池 -->
 		<dependency>
 			<groupId>com.alibaba</groupId>
@@ -83,6 +89,13 @@
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid-spring-boot-starter</artifactId>
 			<version>1.1.0</version>
+		</dependency>
+
+		<!-- thymeleaf模板中shiro标签-->
+		<dependency>
+			<groupId>com.github.theborakompanioni</groupId>
+			<artifactId>thymeleaf-extras-shiro</artifactId>
+			<version>2.0.0</version>
 		</dependency>
 		<!-- shiro 权限控制 -->
 		<dependency>
@@ -172,6 +185,8 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<!--配置后有修改会自动部署-->
+				<configuration><fork>true</fork></configuration>
 			</plugin>
 		</plugins>
 	</build>
